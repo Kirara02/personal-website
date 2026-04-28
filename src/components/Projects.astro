@@ -38,8 +38,8 @@ const { projects } = Astro.props;
   <div class="projects-grid">
     {projects.map(project => (
       <div class="project-card glass-card reveal" data-tech={JSON.stringify(project.technologies)}>
-        <div class="project-image lightbox-trigger" data-image={project.image} data-title={project.title}>
-          <img src={project.image} alt={project.title} loading="lazy" />
+        <div class="project-image lightbox-trigger" data-image={project.image.startsWith('/') ? `${import.meta.env.BASE_URL}${project.image.slice(1)}` : project.image} data-title={project.title}>
+          <img src={project.image.startsWith('/') ? `${import.meta.env.BASE_URL}${project.image.slice(1)}` : project.image} alt={project.title} loading="lazy" />
           <div class="project-overlay">
             <div class="tech-tags">
               {project.technologies.map((tech, index) => (

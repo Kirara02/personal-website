@@ -23,7 +23,7 @@ const { name, title, brief } = Astro.props;
   <div class="hero-image reveal">
     <div class="blob-wrapper">
       <div class="blob"></div>
-      <img src="/assets/images/me.jpg" alt={name} class="profile-img" />
+      <img src={`${import.meta.env.BASE_URL}assets/images/me.jpg`} alt={name} class="profile-img" />
     </div>
   </div>
 </section>

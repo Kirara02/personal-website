@@ -22,7 +22,7 @@ const { workHistory } = Astro.props;
         <div class="timeline-content glass-card">
           <div class="item-header">
             <div class="company-brand">
-              {item.image && <img src={item.image} alt={item.company} class="company-logo" />}
+              {item.image && <img src={item.image.startsWith('/') ? `${import.meta.env.BASE_URL}${item.image.slice(1)}` : item.image} alt={item.company} class="company-logo" />}
               <div>
                 <h3>{item.position}</h3>
                 <h4 class="company">{item.company}</h4>
