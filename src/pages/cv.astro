@@ -1,0 +1,331 @@
+---
+import data from '../data/data.json';
+const { name, title, about, education, skills, contact, projects } = data;
+
+// Filter specific projects for CV (IDs 1, 2, 5)
+const featuredProjects = projects.filter(p => [1, 2, 5].includes(p.id));
+
+// Helper to clean and split descriptions into bullet points
+const formatBullets = (text: string) => {
+  if (!text) return [];
+  // Split by dot followed by space OR dot at the end of string
+  return text.split(/\.\s+/).filter(s => s.trim().length > 0).map(s => {
+    let clean = s.trim();
+    return clean.endsWith('.') ? clean : clean + '.';
+  });
+};
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV - {name}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #111;
+      --secondary: #4b5563;
+      --accent: #7c3aed;
+      --border: #e5e7eb;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--primary);
+      line-height: 1.6;
+      background: #f3f4f6;
+      padding: 40px 0;
+    }
+
+    .cv-page {
+      width: 210mm;
+      min-height: 297mm;
+      margin: 0 auto;
+      background: white;
+      padding: 25mm;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    }
+
+    header {
+      text-align: center;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 20px;
+      margin-bottom: 30px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 26pt;
+      color: var(--primary);
+      line-height: 1.1;
+      margin-bottom: 5px;
+      letter-spacing: -1px;
+    }
+
+    .title {
+      font-size: 13pt;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 15px;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px 20px;
+      font-size: 9pt;
+      color: var(--secondary);
+    }
+
+    .contact-info span {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    section {
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 13pt;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    h2::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .summary {
+      font-size: 10pt;
+      color: var(--secondary);
+      text-align: justify;
+    }
+
+    .experience-item, .education-item {
+      margin-bottom: 35px; /* Increased from 20px */
+    }
+
+    .item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 2px;
+    }
+
+    .item-title {
+      font-weight: 700;
+      font-size: 11pt;
+      color: var(--primary);
+    }
+
+    .item-date {
+      font-weight: 600;
+      font-size: 9.5pt;
+      color: var(--accent);
+    }
+
+    .item-company {
+      font-weight: 500;
+      font-size: 10.5pt;
+      color: var(--secondary);
+      font-style: italic;
+    }
+
+    .bullet-list {
+      margin-top: 8px;
+      padding-left: 18px;
+      font-size: 9.5pt;
+      color: var(--secondary);
+    }
+
+    .bullet-list li {
+      margin-bottom: 4px;
+      position: relative;
+    }
+
+    .skills-container {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skill-row {
+      display: flex;
+      gap: 10px;
+      font-size: 10pt;
+    }
+
+    .skill-category {
+      font-weight: 700;
+      min-width: 100px;
+      color: var(--primary);
+      text-transform: capitalize;
+    }
+
+    .skill-names {
+      color: var(--secondary);
+    }
+
+    .no-print {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 15px;
+      z-index: 100;
+    }
+
+    .btn {
+      padding: 10px 24px;
+      background: #1f2937;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 10pt;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s;
+    }
+
+    .btn:hover {
+      background: #000;
+      transform: translateY(-1px);
+    }
+
+    @media print {
+      body { 
+        background: white; 
+        padding: 0; 
+        margin: 0;
+      }
+      .cv-page { 
+        box-shadow: none; 
+        padding: 20mm; /* Re-add margin as padding inside the element */
+        margin: 0; 
+        width: 100%; 
+      }
+      .no-print { display: none; }
+    }
+
+    @page { 
+      size: A4; 
+      margin: 0; /* This hides browser headers/footers */
+    }
+  </style>
+</head>
+<body>
+  <div class="no-print">
+    <a href="/" class="btn" style="background: #6b7280;">Back to Site</a>
+    <button onclick="window.print()" class="btn" style="background: var(--accent);">Download Professional CV (PDF)</button>
+  </div>
+
+  <div class="cv-page">
+    <header>
+      <h1>{name}</h1>
+      <div class="title">{title}</div>
+      <div class="contact-info">
+        <span>{contact.email}</span>
+        <span>•</span>
+        <span>{contact.phone}</span>
+        <span>•</span>
+        <span>{contact.location}</span>
+      </div>
+      <div class="contact-info" style="margin-top: 5px;">
+        <span>linkedin.com/in/fathul-hidayat-dev</span>
+        <span>•</span>
+        <span>github.com/Kirara02</span>
+        <span>•</span>
+        <span style="color: var(--accent); font-weight: 600;">{contact.social.website}</span>
+      </div>
+    </header>
+
+    <section>
+      <h2>Professional Summary</h2>
+      <p class="summary">{about.description}</p>
+    </section>
+
+    <section>
+      <h2>Work Experience</h2>
+      {about.workHistory.map(job => (
+        <div class="experience-item">
+          <div class="item-header">
+            <span class="item-title">{job.position}</span>
+            <span class="item-date">{job.period}</span>
+          </div>
+          <div class="item-company">{job.company} — {job.location}</div>
+          <ul class="bullet-list">
+            {formatBullets(job.description).map(bullet => (
+              <li>{bullet}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </section>
+    
+    <section>
+      <h2>Key Projects</h2>
+      {featuredProjects.map(project => (
+        <div class="experience-item" style="margin-bottom: 25px;">
+          <div class="item-title" style="font-size: 12pt;">{project.title}</div>
+          <div style="font-size: 9pt; color: var(--accent); font-weight: 600; margin-top: 2px; margin-bottom: 6px;">
+            Tech Stack: {project.technologies.join(', ')}
+          </div>
+          <p class="summary">{project.description}</p>
+        </div>
+      ))}
+      <p style="font-size: 8.5pt; color: var(--accent); font-style: italic; margin-top: -5px; margin-bottom: 25px;">
+        * More projects available at {contact.social.website}
+      </p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      {education.map(edu => (
+        <div class="education-item">
+          <div class="item-header">
+            <span class="item-title">{edu.degree}</span>
+            <span class="item-date">{edu.year}</span>
+          </div>
+          <div class="item-company">{edu.school}</div>
+          <p style="font-size: 9.5pt; color: var(--secondary); margin-top: 5px;">{edu.description}</p>
+        </div>
+      ))}
+    </section>
+
+    <section>
+      <h2>Technical Skills</h2>
+      <div class="skills-container">
+        {[...new Set(skills.map(s => s.category))].map(cat => (
+          <div class="skill-row">
+            <span class="skill-category">{cat}:</span>
+            <span class="skill-names">{skills.filter(s => s.category === cat).map(s => s.name).join(', ')}</span>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+</body>
+</html>

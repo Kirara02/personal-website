@@ -1,0 +1,130 @@
+---
+interface WorkHistory {
+  company: string;
+  position: string;
+  period: string;
+  description: string;
+}
+
+interface Props {
+  workHistory: WorkHistory[];
+}
+
+const { workHistory } = Astro.props;
+---
+
+<section id="experience" class="section container">
+  <h2 class="section-title reveal">Work Experience</h2>
+  <div class="timeline">
+    {workHistory.map((item, index) => (
+      <div class="timeline-item reveal">
+        <div class="timeline-dot"></div>
+        <div class="timeline-content glass-card">
+          <div class="item-header">
+            <div class="company-brand">
+              {item.image && <img src={item.image} alt={item.company} class="company-logo" />}
+              <div>
+                <h3>{item.position}</h3>
+                <h4 class="company">{item.company}</h4>
+              </div>
+            </div>
+            <span class="period">{item.period}</span>
+          </div>
+          <p>{item.description}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .timeline {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    padding-left: 30px;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--glass-border);
+  }
+
+  .timeline-item {
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .timeline-dot {
+    position: absolute;
+    left: -34px;
+    top: 24px;
+    width: 10px;
+    height: 10px;
+    background: var(--accent-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--accent-primary);
+  }
+
+  .timeline-content {
+    transition: transform 0.3s ease;
+  }
+
+  .timeline-content:hover {
+    transform: translateX(10px);
+    border-color: var(--accent-primary);
+  }
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .company-brand {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+  }
+
+  .company-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    background: white;
+    padding: 4px;
+    object-fit: contain;
+  }
+
+  h3 {
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    line-height: 1.2;
+  }
+
+  .company {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+  }
+
+  @media (max-width: 640px) {
+    .item-header {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

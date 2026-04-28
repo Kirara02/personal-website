@@ -1,0 +1,243 @@
+{
+  "name": "FATHUL HIDAYAT",
+  "title": "Software Developer (Mobile & Backend)",
+  "about": {
+    "brief": "Experienced software developer with 3+ years experience, specializing in cross-platform mobile development and robust backend systems. Published 10+ applications across Google Play Store and Apple App Store. Expert in Flutter, Go, and native Android/iOS development.",
+    "description": "Highly skilled and results-oriented Software Developer with over 3 years of professional experience in designing, developing, and deploying high-performance mobile and backend applications. Expert in Flutter for cross-platform solutions and Go / .NET for robust, scalable backend architectures. I have a proven track record of successfully publishing 10+ applications to the Google Play Store and the Apple App Store, demonstrating a deep understanding of the full mobile app development lifecycle. My technical expertise extends to real-time communication protocols like WebSockets, cloud messaging with Firebase, and modern architectural patterns such as BloC and Riverpod. Beyond coding, I am an advocate for clean code principles, modular architecture, and efficient CI/CD workflows. I thrive in agile environments and am dedicated to building user-centric products that solve complex problems through innovative technology.",
+    "workHistory": [
+      {
+        "company": "PT UniGuard Indonesia",
+        "position": "Mobile Developer",
+        "location": "Bandung, West Java",
+        "period": "August 2024 - Present",
+        "image": "/assets/images/company/uniguard.png",
+        "description": "Developed and maintained mobile applications for both cross-platform (Flutter with Riverpod) and native platforms (Kotlin, Java, Swift). Experienced in full app lifecycle from development to Play Store publishing. Implemented real-time communication features using WebSocket and push notifications with Firebase Cloud Messaging (FCM). Translated business requirements into functional and scalable software solutions. Worked closely with cross-functional teams to design and implement new features. Optimized application performance and resolved technical issues. Maintained clean, modular, and well-documented code for future development."
+      },
+      {
+        "company": "PT Zen Multimedia Indonesia",
+        "position": "Flutter Mobile Developer",
+        "location": "Purwakarna, West Java",
+        "period": "June 2023 - July 2024",
+        "image": "/assets/images/company/zmi.png",
+        "description": "Designed and implemented new features in mobile apps using Flutter, implemented BloC architecture, fixed bugs, and learned best practices in software development."
+      },
+      {
+        "company": "Prahwa",
+        "position": "Android Developer, Internship",
+        "location": "Tasikmalaya, West Java",
+        "period": "July 2022 - October 2022",
+        "image": "/assets/images/company/prahwa.png",
+        "description": "Learned Dart and Flutter from basic, slicing UI design from Figma, created example projects, and implemented BloC state management and clean architecture."
+      }
+    ]
+  },
+  "education": [
+    {
+      "degree": "Software Engineering",
+      "school": "SMK YPC Tasikmalaya",
+      "year": "2023",
+      "description": "Graduated as top student in Software Engineering program. Specialized in software development, programming fundamentals, and practical application development."
+    }
+  ],
+  "skills": [
+    { "name": "Flutter", "level": 95, "category": "mobile" },
+    { "name": "React Native", "level": 75, "category": "mobile" },
+    { "name": "Kotlin Multiplatform", "level": 85, "category": "mobile" },
+    { "name": "Kotlin", "level": 90, "category": "android" },
+    { "name": "Java", "level": 80, "category": "android" },
+    { "name": "Swift", "level": 70, "category": "ios" },
+    { "name": "Go", "level": 90, "category": "backend" },
+    { "name": ".NET", "level": 80, "category": "backend" },
+    { "name": "C#", "level": 75, "category": "desktop" },
+    { "name": "Python", "level": 70, "category": "iot" },
+    { "name": "JavaScript", "level": 80, "category": "web" },
+    { "name": "Laravel", "level": 80, "category": "web" },
+    { "name": "VS Code", "category": "tools" },
+    { "name": "Android Studio", "category": "tools" },
+    { "name": "Xcode", "category": "tools" },
+    { "name": "Postman", "category": "tools" },
+    { "name": "Git", "category": "tools" },
+    { "name": "GitHub", "category": "tools" },
+    { "name": "GitHub Actions", "category": "tools" },
+    { "name": "Figma", "category": "tools" },
+    { "name": "Trello", "category": "tools" },
+    { "name": "Discord", "category": "tools" },
+    { "name": "Docker", "category": "tools" },
+    { "name": "Firebase", "category": "tools" },
+    { "name": "PostgreSQL", "category": "tools" },
+    { "name": "SQLite", "category": "tools" }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "UniGuardZ",
+      "description": "UniGuardZ is the next generation staff presence, guard tour management and location verification platform developed from over 20 years of experience in the Australian security and hygiene industry. Designed to be incredibly simple and flexible enough to capture the exact data you need, delivered straight to your inbox! UniGuard has successfully fought public litigation claims, secured payment for services rendered and streamlined your workforce operations by helping to ensure data transparency across your workforce.",
+      "image": "/assets/images/projects/uniguardz.png",
+      "technologies": [
+        "Flutter",
+        "Kotlin",
+        "Swift",
+        "SQLite",
+        "REST API",
+        "Google Maps ",
+        "Firebase Cloud Messaging"
+      ],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.uniguard_z",
+        "appStore": "https://apps.apple.com/us/app/uniguardz/id6751801482"
+      }
+    },
+    {
+      "id": 2,
+      "title": "NetGuard",
+      "description": "NetGuard is a comprehensive server monitoring application built with Kotlin Multiplatform, designed to help employees stay informed about server status and ensure timely maintenance. The app provides real-time server monitoring, incident reporting, and comprehensive analytics to keep your infrastructure running smoothly.",
+      "image": "/assets/images/projects/netguard.png",
+      "technologies": [
+        "Android",
+        "iOS",
+        "Kotlin",
+        "Compose Multiplatform",
+        "SQLDelight",
+        "REST API",
+        "Background Tasks",
+        "Firebase Cloud Messaging",
+        "Stripe",
+        "Sendgrid",
+        "Website",
+        "Go-Fiber",
+        "Next.js"
+      ],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.netguard_app",
+        "appStore": "https://apps.apple.com/app/netguard-uniguard/id6759081786",
+        "website": "https://netguard-2026.web.app/"
+      }
+    },
+    {
+      "id": 3,
+      "title": "NoiseHub",
+      "description": "Noise Hub is a professional-grade noise monitoring application that gives you real-time visibility into ambient sound levels across multiple sensor locations — right from your mobile device.\n\nWhether you're managing an industrial facility, monitoring workplace safety, or overseeing environmental noise compliance, Noise Hub connects seamlessly to your hardware sensors and delivers live data where you need it.",
+      "image": "/assets/images/projects/noise_hub.png",
+      "technologies": [
+        "Flutter",
+        "Riverpod",
+        "REST API",
+        "Firebase Cloud Messaging"
+      ],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.noise_hub",
+        "appStore": "https://apps.apple.com/app/noisehub-uniguard/id6760005181"
+      }
+    },
+    {
+      "id": 4,
+      "title": "ThermoGuard",
+      "description": "An enterprise-grade mobile application developed with Flutter, designed to interface with the Temperature Monitoring Server. This application provides real-time environmental monitoring, sophisticated asset management hierarchy, and robust administrative controls.",
+      "image": "/assets/images/projects/thermoguard.png",
+      "technologies": [
+        "Flutter",
+        "Riverpod",
+        "REST API",
+        "Go-Fiber",
+        "Firebase Cloud Messaging"
+      ],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.temp_monitoring_app",
+        "appStore": "https://apps.apple.com/app/thermoguard/id6759039385"
+      }
+    },
+    {
+      "id": 5,
+      "title": "MPASS",
+      "description": "MPASS is a premium Android application designed for cruise ship passenger management, focusing on safety, boarding efficiency, and emergency evacuation tracking using UHF RFID technology.",
+      "image": "/assets/images/projects/mpass.png",
+      "technologies": [
+        "Android",
+        "Kotlin",
+        "Jetpack Compose",
+        "RFID SDK",
+        "REST API"
+      ],
+      "link": {
+        "repository": "https://github.com/Uniguard-Indonesia/cruise-passenger-app"
+      }
+    },
+    {
+      "id": 6,
+      "title": "Assets Track RFID",
+      "description": "The Assets Track RFID app is designed specifically for handheld devices equipped with RFID capabilities. The application leverages specialized SDKs provided by handheld device manufacturers to enable seamless RFID tag reading and management. It provides an intuitive interface for tracking and managing various items, batches, and transactions through integrated RFID scanning capabilities.",
+      "image": "/assets/images/projects/halmann_rfid.png",
+      "technologies": ["Kotlin", "REST API", "RFID SDK"],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.assets_track"
+      }
+    },
+    {
+      "id": 8,
+      "title": "PTT Uniguard",
+      "description": "Introducing UNIGUARD PTT, a modern communication solution designed to simplify and accelerate your team's communication. In this digital era, we understand that speed, efficiency, and security are key to maintaining smooth business or organization operations. Uniguard PTT is here as an answer to these needs by offering a reliable and easy-to-use Push-to-Talk (PTT) platform.",
+      "image": "/assets/images/projects/ptt_uniguard.png",
+      "technologies": [
+        "Java",
+        "REST API",
+        "WebSocket",
+        "Mumble Server",
+        "Google Maps API"
+      ],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.ptt_app"
+      }
+    },
+    {
+      "id": 9,
+      "title": "GPS Uniguard",
+      "description": "GPS Uniguard is a mobile application for managing GPS tracking devices. It requires a Traccar server instance to work.",
+      "image": "/assets/images/projects/gps_uniguard.png",
+      "technologies": ["Flutter", "Local Auth", "WebView", "Caching"],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.gps",
+        "appStore": "https://apps.apple.com/app/gps-uniguard/id6759035102"
+      }
+    },
+    {
+      "id": 10,
+      "title": "Bebunge",
+      "description": "Bebunge is a One-Stop Portal Service owned by the Bekasi Regency Communication, Informatics, Cryptography and Statistics Service. With Bebunge, the public will get information about government programs and other information. The Bebunge application functions as an application for complaints and aspirations from the public which will then be forwarded to the relevant section for follow-up.",
+      "image": "/assets/images/projects/bebunge.png",
+      "technologies": ["Flutter", "Bloc", "REST API", "Google Maps API"],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=apps.diskominfobekasikab.bebunge"
+      }
+    },
+    {
+      "id": 11,
+      "title": "Prosmart",
+      "description": "ProSmart application is the first free online evidence return application in Indonesia. You can download this ProSmart application on Playstore. In this application you can check your belongings that have been used as evidence in court at the Cikarang District Court",
+      "image": "/assets/images/projects/prosmart.png",
+      "technologies": ["Flutter", "Bloc", "REST API"],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.zen.prosmart"
+      }
+    },
+    {
+      "id": 12,
+      "title": "BLE Uniguard",
+      "description": "BLE Uniguard is a mobile application for managing BLE tracking devices. It requires a Traccar server instance to work.",
+      "image": "/assets/images/projects/ble_uniguard.png",
+      "technologies": ["Kotlin", "REST API", "BLE"],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.ble_scanner"
+      }
+    }
+  ],
+  "contact": {
+    "email": "fahtul.singaparna@gmail.com",
+    "phone": "+6281313320710",
+    "location": "Tasikmalaya, West Java",
+    "social": {
+      "website": "kirara-dev.my.id",
+      "linkedin": "https://www.linkedin.com/in/fathul-hidayat-dev",
+      "github": "https://github.com/Kirara02"
+    }
+  }
+}

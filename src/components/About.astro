@@ -1,0 +1,48 @@
+---
+interface Props {
+  description: string;
+}
+
+const { description } = Astro.props;
+---
+
+<section id="about" class="section container">
+  <h2 class="section-title reveal">About Me</h2>
+  <div class="glass-card about-card reveal">
+    <div class="about-content">
+      <p>{description}</p>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about-card {
+    max-width: 800px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .about-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(124, 58, 237, 0.05) 0%, transparent 70%);
+    z-index: 0;
+  }
+
+  .about-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  p {
+    font-size: 1.15rem;
+    color: var(--text-secondary);
+    line-height: 1.8;
+    white-space: pre-line;
+  }
+</style>

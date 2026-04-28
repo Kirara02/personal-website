@@ -1,23 +1,419 @@
+---
+import '../styles/global.css';
+
+interface Props {
+	title?: string;
+	description?: string;
+}
+
+const { 
+	title = "Fathul Hidayat | Software Developer", 
+	description = "Portfolio of Fathul Hidayat, a Mobile & Backend Developer specializing in Flutter, Go, and Native development." 
+} = Astro.props;
+---
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
+		
+		<!-- SEO -->
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<!-- Google Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 	</head>
-	<body>
-		<slot />
+	<body class="loading">
+    <div id="preloader" class="preloader">
+      <div class="preloader-content">
+        <div class="logo-animation">
+          <span>F</span><span>H</span>
+        </div>
+        <div class="loader-bar"></div>
+      </div>
+    </div>
+
+		<header class="navbar">
+			<nav class="container">
+				<a href="#" class="logo">FH<span>.</span></a>
+				
+				<button class="mobile-toggle" aria-label="Toggle menu" id="mobile-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</button>
+
+				<ul class="nav-links" id="nav-links">
+					<li><a href="#about">About</a></li>
+					<li><a href="#experience">Experience</a></li>
+					<li><a href="#education">Education</a></li>
+					<li><a href="#skills">Skills</a></li>
+					<li><a href="#projects">Projects</a></li>
+					<li><a href="#contact">Contact</a></li>
+					<li><a href="mailto:fahtul.singaparna@gmail.com" class="nav-cta">Hire Me</a></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<main>
+			<slot />
+    
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+    </button>
+		</main>
+
+		<footer class="footer">
+			<div class="container">
+				<p>&copy; {new Date().getFullYear()} Fathul Hidayat. Built with Astro.</p>
+			</div>
+		</footer>
+
+		<script>
+			// Mobile Menu Toggle
+			const mobileToggle = document.getElementById('mobile-toggle');
+			const navLinks = document.getElementById('nav-links');
+			const links = navLinks?.querySelectorAll('a');
+
+			mobileToggle?.addEventListener('click', () => {
+				mobileToggle.classList.toggle('active');
+				navLinks?.classList.toggle('active');
+				document.body.classList.toggle('overflow-hidden');
+			});
+
+			links?.forEach(link => {
+				link.addEventListener('click', () => {
+					mobileToggle?.classList.remove('active');
+					navLinks?.classList.remove('active');
+					document.body.classList.remove('overflow-hidden');
+				});
+			});
+
+			// Reveal Animations on Scroll
+			const observerOptions = {
+				threshold: 0.1,
+				rootMargin: '0px 0px -50px 0px'
+			};
+
+			const observer = new IntersectionObserver((entries) => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('active');
+					}
+				});
+			}, observerOptions);
+
+			const revealElements = document.querySelectorAll('.reveal');
+			revealElements.forEach(el => observer.observe(el));
+
+      // Preloader Hiding Logic
+      window.addEventListener('load', () => {
+        const preloader = document.getElementById('preloader');
+        setTimeout(() => {
+          preloader?.classList.add('hidden');
+          document.body.classList.remove('loading');
+        }, 1500); 
+      });
+
+      // Back to Top Logic
+      const backToTop = document.getElementById('back-to-top');
+      window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+          backToTop?.classList.add('visible');
+        } else {
+          backToTop?.classList.remove('visible');
+        }
+      });
+
+      backToTop?.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+		</script>
 	</body>
 </html>
 
-<style>
-	html,
-	body {
-		margin: 0;
+<style is:global>
+  /* Preloader Styles */
+  .preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--bg-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    transition: opacity 0.8s cubic-bezier(0.77, 0, 0.175, 1), visibility 0.8s;
+  }
+
+  .preloader.hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  .loading {
+    overflow: hidden;
+  }
+
+  .preloader-content {
+    text-align: center;
+  }
+
+  .logo-animation {
+    font-family: var(--font-heading);
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 20px;
+    display: flex;
+    gap: 10px;
+  }
+
+  .logo-animation span {
+    color: var(--text-primary);
+    display: inline-block;
+    animation: pulse 1.5s ease-in-out infinite alternate;
+  }
+
+  .logo-animation span:nth-child(2) {
+    color: var(--accent-primary);
+    animation-delay: 0.2s;
+  }
+
+  .loader-bar {
+    width: 100px;
+    height: 2px;
+    background: var(--glass-border);
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+  }
+
+  .loader-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: var(--accent-gradient);
+    animation: loading 1.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    from { transform: scale(1); opacity: 0.5; filter: blur(2px); }
+    to { transform: scale(1.1); opacity: 1; filter: blur(0); }
+  }
+
+  @keyframes loading {
+    0% { left: -100%; }
+    50% { left: 0; }
+    100% { left: 100%; }
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--glass-border);
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--accent-primary);
+  }
+
+  .back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+  }
+
+  .back-to-top:hover {
+    background: var(--accent-secondary);
+    transform: translateY(-5px);
+  }
+
+	.navbar {
+		position: fixed;
+		top: 0;
+		left: 0;
 		width: 100%;
-		height: 100%;
+		z-index: 1000;
+		padding: 20px 0;
+		background: rgba(10, 10, 12, 0.8);
+		backdrop-filter: blur(12px);
+		border-bottom: 1px solid var(--glass-border);
+		transition: all 0.3s ease;
+	}
+
+	.navbar nav {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+	}
+
+	.logo {
+		font-family: var(--font-heading);
+		font-size: 1.5rem;
+		font-weight: 800;
+		letter-spacing: -1px;
+		z-index: 1001;
+	}
+
+	.logo span {
+		color: var(--accent-primary);
+	}
+
+	.nav-links {
+		display: flex;
+		align-items: center;
+		gap: 32px;
+	}
+
+	.nav-links a {
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--text-secondary);
+		position: relative;
+		padding: 4px 0;
+	}
+
+	.nav-links a::after {
+		content: '';
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		width: 0;
+		height: 2px;
+		background: var(--accent-gradient);
+		transition: width 0.3s ease;
+	}
+
+	.nav-links a:hover {
+		color: var(--text-primary);
+	}
+
+	.nav-links a:hover::after {
+		width: 100%;
+	}
+
+	.nav-cta {
+		background: var(--accent-primary);
+		color: white !important;
+		padding: 10px 24px !important;
+		border-radius: 8px;
+		transition: all 0.3s ease !important;
+	}
+
+	.nav-cta:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 5px 15px rgba(124, 58, 237, 0.3);
+	}
+
+	.nav-cta::after {
+		display: none;
+	}
+
+	.mobile-toggle {
+		display: none;
+		flex-direction: column;
+		gap: 6px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		z-index: 1001;
+		padding: 5px;
+	}
+
+	.mobile-toggle span {
+		display: block;
+		width: 28px;
+		height: 2px;
+		background: var(--text-primary);
+		transition: all 0.3s ease;
+	}
+
+	.footer {
+		padding: 60px 0;
+		border-top: 1px solid var(--border-color);
+		text-align: center;
+		color: var(--text-muted);
+		font-size: 0.9rem;
+	}
+
+	@media (max-width: 768px) {
+		.mobile-toggle {
+			display: flex;
+		}
+
+		.mobile-toggle.active span:nth-child(1) {
+			transform: translateY(8px) rotate(45deg);
+		}
+		.mobile-toggle.active span:nth-child(2) {
+			opacity: 0;
+		}
+		.mobile-toggle.active span:nth-child(3) {
+			transform: translateY(-8px) rotate(-45deg);
+		}
+
+		.nav-links {
+			position: fixed;
+			top: 0;
+			right: -100%;
+			width: 100%;
+			height: 100vh;
+			background: var(--bg-primary);
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			transition: all 0.4s cubic-bezier(0.77, 0, 0.175, 1);
+			z-index: 1000;
+		}
+
+		.nav-links.active {
+			right: 0;
+		}
+
+		.nav-links a {
+			font-size: 1.5rem;
+		}
+		
+		:global(.overflow-hidden) {
+			overflow: hidden;
+		}
 	}
 </style>

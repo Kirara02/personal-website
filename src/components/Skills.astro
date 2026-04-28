@@ -1,0 +1,147 @@
+---
+interface Skill {
+  name: string;
+  level?: number;
+  category: string;
+}
+
+interface Props {
+  skills: Skill[];
+}
+
+const { skills } = Astro.props;
+
+// Group skills by category
+const categories = [...new Set(skills.map(s => s.category))];
+---
+
+<section id="skills" class="section container">
+  <h2 class="section-title reveal">Technical Skills</h2>
+  <div class="skills-grid">
+    {categories.map(category => {
+      const categorySkills = skills.filter(s => s.category === category);
+      const hasLevels = categorySkills.some(s => s.level);
+
+      return (
+        <div class={`skill-category glass-card reveal ${!hasLevels ? 'tools-category' : ''}`}>
+          <h3>{category.charAt(0).toUpperCase() + category.slice(1)}</h3>
+          <div class={hasLevels ? "skills-list" : "tools-grid"}>
+            {categorySkills.map(skill => (
+              hasLevels ? (
+                <div class="skill-item">
+                  <div class="skill-info">
+                    <span>{skill.name}</span>
+                    {skill.level && <span class="level">{skill.level}%</span>}
+                  </div>
+                  <div class="progress-bar">
+                    <div class="progress" style={`width: ${skill.level}%`}></div>
+                  </div>
+                </div>
+              ) : (
+                <span class="tool-tag">{skill.name}</span>
+              )
+            ))}
+          </div>
+        </div>
+      );
+    })}
+  </div>
+</section>
+
+<style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+  }
+
+  .skill-category {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .tools-category {
+    grid-column: span 2;
+  }
+
+  .skill-category h3 {
+    font-size: 1.25rem;
+    margin-bottom: 24px;
+    color: var(--accent-primary);
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 12px;
+  }
+
+  .skills-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .tools-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .tool-tag {
+    padding: 8px 16px;
+    background: var(--bg-tertiary);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: all 0.3s ease;
+  }
+
+  .tool-tag:hover {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    transform: translateY(-2px);
+  }
+
+  .skill-item {
+    width: 100%;
+  }
+
+  .skill-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+    font-weight: 500;
+  }
+
+  .level {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  .progress-bar {
+    height: 6px;
+    background: var(--bg-primary);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress {
+    height: 100%;
+    background: var(--accent-gradient);
+    border-radius: 10px;
+  }
+
+  @media (max-width: 992px) {
+    .tools-category {
+      grid-column: span 1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
