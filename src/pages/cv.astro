@@ -218,6 +218,25 @@ const toolSkills = skills.filter(s => !s.level).map(s => s.name).join(', ');
       transform: translateY(-1px);
     }
 
+    @media screen and (max-width: 210mm) {
+      body {
+        padding: 20px 0;
+        background: #f3f4f6;
+      }
+      .cv-page {
+        width: 95%;
+        min-height: auto;
+        padding: 20px;
+        box-shadow: none;
+      }
+      .no-print {
+        position: static;
+        transform: none;
+        justify-content: center;
+        margin-bottom: 20px;
+      }
+    }
+
     @media print {
       body { 
         background: white; 

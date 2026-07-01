@@ -142,22 +142,25 @@ const { contact } = Astro.props;
     });
   });
 
-  // Mouse move glow effect
-  const contactCards = document.querySelectorAll('.contact-info-card, .contact-form-card');
-  contactCards.forEach(card => {
-    const cardEl = card as HTMLElement;
-    cardEl.addEventListener('mousemove', (e) => {
-      const rect = cardEl.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      cardEl.style.setProperty('--mouse-x', `${x}px`);
-      cardEl.style.setProperty('--mouse-y', `${y}px`);
+  // Mouse move glow effect (Only on Desktop/Hover devices)
+  const supportsHoverContact = window.matchMedia('(hover: hover)').matches;
+  if (supportsHoverContact) {
+    const contactCards = document.querySelectorAll('.contact-info-card, .contact-form-card');
+    contactCards.forEach(card => {
+      const cardEl = card as HTMLElement;
+      cardEl.addEventListener('mousemove', (e) => {
+        const rect = cardEl.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        cardEl.style.setProperty('--mouse-x', `${x}px`);
+        cardEl.style.setProperty('--mouse-y', `${y}px`);
+      });
+      cardEl.addEventListener('mouseleave', () => {
+        cardEl.style.setProperty('--mouse-x', '50%');
+        cardEl.style.setProperty('--mouse-y', '50%');
+      });
     });
-    cardEl.addEventListener('mouseleave', () => {
-      cardEl.style.setProperty('--mouse-x', '50%');
-      cardEl.style.setProperty('--mouse-y', '50%');
-    });
-  });
+  }
 
   // Contact Form Submission & Success trigger
   const form = document.getElementById('contact-form') as HTMLFormElement;
