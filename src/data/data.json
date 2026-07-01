@@ -43,14 +43,15 @@
     { "name": "Flutter", "level": 95, "category": "mobile" },
     { "name": "React Native", "level": 75, "category": "mobile" },
     { "name": "Kotlin Multiplatform", "level": 85, "category": "mobile" },
-    { "name": "Kotlin", "level": 90, "category": "android" },
-    { "name": "Java", "level": 80, "category": "android" },
+    { "name": "Kotlin", "level": 95, "category": "android" },
+    { "name": "Java", "level": 85, "category": "android" },
     { "name": "Swift", "level": 70, "category": "ios" },
-    { "name": "Go", "level": 90, "category": "backend" },
-    { "name": ".NET", "level": 80, "category": "backend" },
-    { "name": "C#", "level": 75, "category": "desktop" },
+    { "name": "Go", "level": 95, "category": "backend" },
+    { "name": ".NET", "level": 85, "category": "backend" },
+    { "name": "C#", "level": 80, "category": "desktop" },
     { "name": "Python", "level": 70, "category": "iot" },
-    { "name": "JavaScript", "level": 80, "category": "web" },
+    { "name": "Vue", "level": 85, "category": "web" },
+    { "name": "React", "level": 70, "category": "web" },
     { "name": "Laravel", "level": 80, "category": "web" },
     { "name": "VS Code", "category": "tools" },
     { "name": "Android Studio", "category": "tools" },
@@ -59,6 +60,7 @@
     { "name": "Git", "category": "tools" },
     { "name": "GitHub", "category": "tools" },
     { "name": "GitHub Actions", "category": "tools" },
+    { "name": "Woodpecker", "category": "tools" },
     { "name": "Figma", "category": "tools" },
     { "name": "Trello", "category": "tools" },
     { "name": "Discord", "category": "tools" },
@@ -184,6 +186,25 @@
     },
     {
       "id": 9,
+      "title": "Man-down App",
+      "description": "UniGuard Man-Down is a smart workplace safety monitoring application designed to protect field officers, security personnel, and lone workers in real-time. Using advanced device motion-sensing technology, UniGuard Man-Down automatically triggers distress signals even when the worker is incapacitated and unable to call for help manually.",
+      "image": "/assets/images/projects/mandown.png",
+      "technologies": [
+        "Flutter",
+        "Riverpod",
+        "REST API",
+        "Background Tasks",
+        "Go-Echo",
+        "Firebase Cloud Messaging",
+        "Vue"
+      ],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.mandown_app",
+        "appStore": "https://apps.apple.com/app/man-down/id6779484298"
+      }
+    },
+    {
+      "id": 10,
       "title": "PTT Uniguard",
       "description": "Introducing UNIGUARD PTT, a modern communication solution designed to simplify and accelerate your team's communication. In this digital era, we understand that speed, efficiency, and security are key to maintaining smooth business or organization operations. Uniguard PTT is here as an answer to these needs by offering a reliable and easy-to-use Push-to-Talk (PTT) platform.",
       "image": "/assets/images/projects/ptt_uniguard.png",
@@ -199,7 +220,7 @@
       }
     },
     {
-      "id": 10,
+      "id": 11,
       "title": "GPS Uniguard",
       "description": "GPS Uniguard is a mobile application for managing GPS tracking devices. It requires a Traccar server instance to work.",
       "image": "/assets/images/projects/gps_uniguard.png",
@@ -210,7 +231,17 @@
       }
     },
     {
-      "id": 11,
+      "id": 12,
+      "title": "BLE Uniguard",
+      "description": "BLE Uniguard is a mobile application for managing BLE tracking devices. It requires a Traccar server instance to work.",
+      "image": "/assets/images/projects/ble_uniguard.png",
+      "technologies": ["Kotlin", "REST API", "BLE", "Background Tasks"],
+      "link": {
+        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.ble_scanner"
+      }
+    },
+    {
+      "id": 13,
       "title": "Bebunge",
       "description": "Bebunge is a One-Stop Portal Service owned by the Bekasi Regency Communication, Informatics, Cryptography and Statistics Service. With Bebunge, the public will get information about government programs and other information. The Bebunge application functions as an application for complaints and aspirations from the public which will then be forwarded to the relevant section for follow-up.",
       "image": "/assets/images/projects/bebunge.png",
@@ -220,23 +251,13 @@
       }
     },
     {
-      "id": 12,
+      "id": 14,
       "title": "Prosmart",
       "description": "ProSmart application is the first free online evidence return application in Indonesia. You can download this ProSmart application on Playstore. In this application you can check your belongings that have been used as evidence in court at the Cikarang District Court",
       "image": "/assets/images/projects/prosmart.png",
       "technologies": ["Flutter", "Bloc", "REST API"],
       "link": {
         "playStore": "https://play.google.com/store/apps/details?id=com.zen.prosmart"
-      }
-    },
-    {
-      "id": 12,
-      "title": "BLE Uniguard",
-      "description": "BLE Uniguard is a mobile application for managing BLE tracking devices. It requires a Traccar server instance to work.",
-      "image": "/assets/images/projects/ble_uniguard.png",
-      "technologies": ["Kotlin", "REST API", "BLE"],
-      "link": {
-        "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.ble_scanner"
       }
     }
   ],
