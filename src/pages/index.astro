@@ -9,11 +9,11 @@ import Projects from '../components/Projects.astro';
 import Contact from '../components/Contact.astro';
 import data from '../data/data.json';
 
-const { name, title, about, skills, projects, contact, education } = data;
+const { name, title, subtitles, about, skills, projects, contact, education } = data;
 ---
 
 <Layout title={`${name} | ${title}`}>
-	<Hero name={name} title={title} brief={about.brief} />
+	<Hero name={name} title={title} subtitles={subtitles} brief={about.brief} />
 	<About description={about.description} />
 	<Experience workHistory={about.workHistory} />
 	<Education education={education} />

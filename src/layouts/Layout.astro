@@ -30,6 +30,7 @@ const {
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 	</head>
 	<body class="loading">
+    <div id="scroll-progress" class="scroll-progress"></div>
     <div id="preloader" class="preloader">
       <div class="preloader-content">
         <div class="logo-animation">
@@ -134,11 +135,35 @@ const {
       backToTop?.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       });
+
+      // Scroll Progress Bar Logic
+      const scrollProgress = document.getElementById('scroll-progress');
+      window.addEventListener('scroll', () => {
+        const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (totalHeight > 0 && scrollProgress) {
+          const progress = (window.scrollY / totalHeight) * 100;
+          scrollProgress.style.width = `${progress}%`;
+        }
+      });
 		</script>
 	</body>
 </html>
 
 <style is:global>
+  /* Scroll Progress Bar */
+  .scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 3px;
+    background: var(--accent-gradient);
+    z-index: 10002;
+    box-shadow: 0 0 8px var(--accent-primary);
+    pointer-events: none;
+    transition: width 0.1s ease-out;
+  }
+
   /* Preloader Styles */
   .preloader {
     position: fixed;

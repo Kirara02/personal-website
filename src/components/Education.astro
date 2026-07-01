@@ -31,6 +31,20 @@ const { education } = Astro.props;
   </div>
 </section>
 
+<script>
+  const eduCards = document.querySelectorAll('.education-card');
+  eduCards.forEach(card => {
+    const cardEl = card as HTMLElement;
+    cardEl.addEventListener('mousemove', (e) => {
+      const rect = cardEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      cardEl.style.setProperty('--mouse-x', `${x}px`);
+      cardEl.style.setProperty('--mouse-y', `${y}px`);
+    });
+  });
+</script>
+
 <style>
   .education-grid {
     display: grid;
@@ -45,6 +59,40 @@ const { education } = Astro.props;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .education-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      200px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(124, 58, 237, 0.12),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .education-card:hover::before {
+    opacity: 1;
+  }
+
+  .education-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(124, 58, 237, 0.3);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3), 0 0 20px rgba(124, 58, 237, 0.1);
+  }
+
+  .education-header, .description {
+    position: relative;
+    z-index: 1;
   }
 
   .education-header {
@@ -75,6 +123,14 @@ const { education } = Astro.props;
     font-weight: 600;
     color: var(--text-secondary);
     white-space: nowrap;
+    transition: all 0.3s ease;
+  }
+
+  .education-card:hover .year-tag {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 10px rgba(124, 58, 237, 0.3);
   }
 
   .description {

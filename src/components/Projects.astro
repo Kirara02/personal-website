@@ -100,6 +100,34 @@ const { projects } = Astro.props;
   const filterBtns = document.querySelectorAll('.filter-btn');
   const projectCards = document.querySelectorAll('.project-card');
 
+  // Interactive 3D Tilt and Mouse-follow Glow Effects
+  projectCards.forEach(card => {
+    const cardEl = card as HTMLElement;
+    
+    cardEl.addEventListener('mousemove', (e) => {
+      const rect = cardEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      
+      cardEl.style.setProperty('--mouse-x', `${x}px`);
+      cardEl.style.setProperty('--mouse-y', `${y}px`);
+
+      // 3D Parallax Tilt Calculation
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = ((y - centerY) / centerY) * -10; // max 10 degrees tilt
+      const rotateY = ((x - centerX) / centerX) * 10;
+
+      cardEl.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
+    });
+
+    cardEl.addEventListener('mouseleave', () => {
+      cardEl.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
+      cardEl.style.setProperty('--mouse-x', '50%');
+      cardEl.style.setProperty('--mouse-y', '50%');
+    });
+  });
+
   // Tech tags "more" toggle
   const moreTags = document.querySelectorAll('.more-tag');
   moreTags.forEach(tag => {
@@ -215,17 +243,41 @@ const { projects } = Astro.props;
 
   .project-card {
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease;
+    transform-style: preserve-3d;
+    transition: transform 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94), border-color 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+  }
+
+  .project-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      250px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(124, 58, 237, 0.12),
+      transparent 70%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .project-card:hover::before {
+    opacity: 1;
   }
 
   .project-card:hover {
-    transform: translateY(-10px);
-    border-color: var(--accent-primary);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border-color: rgba(124, 58, 237, 0.4);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(124, 58, 237, 0.15);
+  }
+
+  .project-card:not(:hover) {
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), border-color 0.3s ease, box-shadow 0.3s ease;
   }
 
   .project-image {
@@ -316,6 +368,8 @@ const { projects } = Astro.props;
     height: 200px;
     overflow: hidden;
     background: var(--bg-tertiary);
+    transform: translateZ(15px);
+    transition: transform 0.3s ease;
   }
 
   .project-image img {
@@ -390,11 +444,13 @@ const { projects } = Astro.props;
     flex: 1;
     display: flex;
     flex-direction: column;
+    transform: translateZ(25px);
   }
 
   .project-info h3 {
     font-size: 1.4rem;
     margin-bottom: 12px;
+    transform: translateZ(10px);
   }
 
   .project-info p {
@@ -402,11 +458,13 @@ const { projects } = Astro.props;
     color: var(--text-secondary);
     margin-bottom: 20px;
     flex: 1;
+    transform: translateZ(5px);
   }
 
   .project-links {
     display: flex;
     gap: 15px;
+    transform: translateZ(20px);
   }
 
   .link-icon {

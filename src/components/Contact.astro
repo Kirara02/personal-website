@@ -19,60 +19,101 @@ const { contact } = Astro.props;
 
 <section id="contact" class="section container">
   <h2 class="section-title reveal">Get In Touch</h2>
-  <div class="contact-wrapper reveal">
-    <div class="contact-info glass-card">
-      <h3>Let's collaborate</h3>
-      <p>I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
-      
-      <div class="contact-methods">
-        <div class="method">
-          <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          </div>
-          <div class="details">
-            <span>Email</span>
-            <div class="copy-field">
-              <a href={`mailto:${contact.email}`} id="email-text">{contact.email}</a>
-              <button class="copy-btn" data-copy="email-text" title="Copy email">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              </button>
+  <div class="contact-grid reveal">
+    <!-- Left Column: Contact info & Socials -->
+    <div class="contact-info-card glass-card">
+      <div>
+        <h3>Let's collaborate</h3>
+        <p class="subtitle">I'm always open to discussing new projects, creative ideas or opportunities to be part of your visions.</p>
+        
+        <div class="contact-methods">
+          <div class="method">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div class="details">
+              <span>Email</span>
+              <div class="copy-field">
+                <a href={`mailto:${contact.email}`} id="email-text">{contact.email}</a>
+                <button class="copy-btn" data-copy="email-text" title="Copy email">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="method">
-          <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          </div>
-          <div class="details">
-            <span>Phone</span>
-            <div class="copy-field">
-              <a href={`tel:${contact.phone}`} id="phone-text">{contact.phone}</a>
-              <button class="copy-btn" data-copy="phone-text" title="Copy phone">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-              </button>
+          
+          <div class="method">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            </div>
+            <div class="details">
+              <span>Phone</span>
+              <div class="copy-field">
+                <a href={`tel:${contact.phone}`} id="phone-text">{contact.phone}</a>
+                <button class="copy-btn" data-copy="phone-text" title="Copy phone">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-        
-        <div class="method">
-          <div class="icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          </div>
-          <div class="details">
-            <span>Location</span>
-            <p>{contact.location}</p>
+          
+          <div class="method">
+            <div class="icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div class="details">
+              <span>Location</span>
+              <p>{contact.location}</p>
+            </div>
           </div>
         </div>
       </div>
 
       <div class="social-links">
-        <a href={contact.social.linkedin} target="_blank" class="social-btn linkedin">
-          <LinkedInIcon size={20} /> LinkedIn
+        <a href={contact.social.linkedin} target="_blank" class="social-btn linkedin-btn">
+          <LinkedInIcon size={18} /> LinkedIn
         </a>
-        <a href={contact.social.github} target="_blank" class="social-btn github">
-          <GitHubIcon size={20} /> GitHub
+        <a href={contact.social.github} target="_blank" class="social-btn github-btn">
+          <GitHubIcon size={18} /> GitHub
         </a>
+      </div>
+    </div>
+
+    <!-- Right Column: Interactive Form -->
+    <div class="contact-form-card glass-card">
+      <form id="contact-form">
+        <div class="form-row">
+          <div class="input-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" required placeholder="John Doe" />
+          </div>
+          <div class="input-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" name="email" required placeholder="john@example.com" />
+          </div>
+        </div>
+        <div class="input-group">
+          <label for="subject">Subject</label>
+          <input type="text" id="subject" name="subject" required placeholder="Project Collaboration" />
+        </div>
+        <div class="input-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="5" required placeholder="Tell me about your project..."></textarea>
+        </div>
+        <button type="submit" class="submit-btn" id="submit-btn">
+          <span class="btn-text">Send Message</span>
+          <span class="loader hidden"></span>
+        </button>
+      </form>
+
+      <!-- Success Screen -->
+      <div class="success-screen hidden" id="success-screen">
+        <div class="success-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="checkmark"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>Message Sent!</h3>
+        <p>Thank you for reaching out. I'll get back to you as soon as possible.</p>
+        <button class="reset-btn" id="reset-btn">Send Another Message</button>
       </div>
     </div>
   </div>
@@ -89,7 +130,7 @@ const { contact } = Astro.props;
       if (text) {
         navigator.clipboard.writeText(text).then(() => {
           const originalHTML = btn.innerHTML;
-          btn.innerHTML = '<span style="font-size: 10px; font-weight: bold; color: var(--accent-primary)">COPIED!</span>';
+          btn.innerHTML = '<span style="font-size: 10px; font-weight: bold; color: #10b981">COPIED!</span>';
           btn.classList.add('copied');
           
           setTimeout(() => {
@@ -100,80 +141,184 @@ const { contact } = Astro.props;
       }
     });
   });
+
+  // Mouse move glow effect
+  const contactCards = document.querySelectorAll('.contact-info-card, .contact-form-card');
+  contactCards.forEach(card => {
+    const cardEl = card as HTMLElement;
+    cardEl.addEventListener('mousemove', (e) => {
+      const rect = cardEl.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      cardEl.style.setProperty('--mouse-x', `${x}px`);
+      cardEl.style.setProperty('--mouse-y', `${y}px`);
+    });
+    cardEl.addEventListener('mouseleave', () => {
+      cardEl.style.setProperty('--mouse-x', '50%');
+      cardEl.style.setProperty('--mouse-y', '50%');
+    });
+  });
+
+  // Contact Form Submission & Success trigger
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const successScreen = document.getElementById('success-screen');
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = submitBtn?.querySelector('.btn-text');
+  const loader = submitBtn?.querySelector('.loader');
+  const resetBtn = document.getElementById('reset-btn');
+
+  if (form && successScreen && submitBtn) {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      
+      const nameInput = document.getElementById('name') as HTMLInputElement;
+      const emailInput = document.getElementById('email') as HTMLInputElement;
+      const subjectInput = document.getElementById('subject') as HTMLInputElement;
+      const messageInput = document.getElementById('message') as HTMLInputElement;
+
+      const name = nameInput?.value || '';
+      const email = emailInput?.value || '';
+      const subject = subjectInput?.value || 'Project Collaboration';
+      const message = messageInput?.value || '';
+
+      // Get email recipient dynamically from DOM
+      const emailTextEl = document.getElementById('email-text');
+      const emailRecipient = emailTextEl?.textContent || 'fahtul.singaparna@gmail.com';
+
+      // Construct mailto link
+      const mailtoSubject = encodeURIComponent(subject);
+      const mailtoBody = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`);
+      const mailtoLink = `mailto:${emailRecipient}?subject=${mailtoSubject}&body=${mailtoBody}`;
+
+      btnText?.classList.add('hidden');
+      loader?.classList.remove('hidden');
+      submitBtn.disabled = true;
+
+      // Simulate sending delay and open mail client
+      setTimeout(() => {
+        btnText?.classList.remove('hidden');
+        loader?.classList.add('hidden');
+        submitBtn.disabled = false;
+
+        window.location.href = mailtoLink;
+
+        form.classList.add('hidden');
+        successScreen.classList.remove('hidden');
+        form.reset();
+      }, 1000);
+    });
+  }
+
+  if (resetBtn && form && successScreen) {
+    resetBtn.addEventListener('click', () => {
+      successScreen.classList.add('hidden');
+      form.classList.remove('hidden');
+    });
+  }
 </script>
 
 <style>
-  .contact-wrapper {
-    max-width: 700px;
-    margin: 0 auto;
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 30px;
+    align-items: stretch;
   }
 
-  .copy-field {
+  .contact-info-card, .contact-form-card {
+    height: 100%;
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
   }
 
-  .copy-btn {
-    background: none;
-    border: none;
-    color: var(--text-muted);
-    cursor: pointer;
-    padding: 5px;
-    border-radius: 4px;
-    transition: all 0.2s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  /* Radial Mouse glow overlay */
+  .contact-info-card::before, .contact-form-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      250px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(124, 58, 237, 0.1),
+      transparent 75%
+    );
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  .copy-btn:hover {
-    color: var(--accent-primary);
-    background: var(--glass-bg);
+  .contact-info-card:hover::before, .contact-form-card:hover::before {
+    opacity: 1;
   }
 
-  .copy-btn.copied {
-    color: var(--accent-primary);
+  .contact-info-card:hover, .contact-form-card:hover {
+    border-color: rgba(124, 58, 237, 0.25);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3), 0 0 20px rgba(124, 58, 237, 0.08);
   }
 
-  .contact-info h3 {
+  .contact-info-card > *, .contact-form-card > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .contact-info-card h3 {
     font-size: 1.8rem;
-    margin-bottom: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 12px;
   }
 
-  .contact-info > p {
+  .subtitle {
     color: var(--text-secondary);
-    margin-bottom: 40px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 32px;
   }
 
   .contact-methods {
     display: flex;
     flex-direction: column;
-    gap: 30px;
-    margin-bottom: 40px;
+    gap: 24px;
+    margin-bottom: 32px;
   }
 
   .method {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 16px;
   }
 
   .icon {
-    width: 50px;
-    height: 50px;
-    background: var(--bg-tertiary);
-    border-radius: 12px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 10px;
     display: flex;
     align-items: center;
     justify-content: center;
     color: var(--accent-primary);
-    border: 1px solid var(--glass-border);
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+  }
+
+  .method:hover .icon {
+    background: var(--accent-primary);
+    color: white;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.3);
+    transform: scale(1.05);
   }
 
   .details span {
     display: block;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
+    font-weight: 600;
     color: var(--text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -181,42 +326,246 @@ const { contact } = Astro.props;
   }
 
   .details a, .details p {
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     font-weight: 500;
+    color: var(--text-primary);
+  }
+
+  .copy-field {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .copy-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.04);
+  }
+
+  .copy-btn.copied {
+    color: #10b981;
   }
 
   .social-links {
     display: flex;
-    gap: 15px;
-    padding-top: 30px;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 24px;
     border-top: 1px solid var(--glass-border);
   }
 
   .social-btn {
     flex: 1;
     padding: 12px;
-    text-align: center;
     border-radius: 8px;
+    font-size: 0.95rem;
     font-weight: 600;
-    transition: all 0.3s ease;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    color: var(--text-secondary);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
-  .linkedin {
-    background: #0077b5;
+  .linkedin-btn:hover {
+    background: rgba(0, 119, 181, 0.08);
+    border-color: rgba(0, 119, 181, 0.4);
+    color: #0077b5;
+    box-shadow: 0 4px 15px rgba(0, 119, 181, 0.15);
+    transform: translateY(-2px);
+  }
+
+  .github-btn:hover {
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(255, 255, 255, 0.4);
     color: white;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
   }
 
-  .github {
-    background: #24292e;
+  /* Form Styles */
+  #contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .input-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+  }
+
+  .input-group input, .input-group textarea {
+    padding: 12px 16px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
     color: white;
+    font-family: inherit;
+    font-size: 0.95rem;
+    outline: none;
+    transition: all 0.3s ease;
   }
 
-  .social-btn:hover {
-    transform: translateY(-3px);
-    opacity: 0.9;
+  .input-group input:focus, .input-group textarea:focus {
+    border-color: var(--accent-primary);
+    background: rgba(255, 255, 255, 0.04);
+    box-shadow: 0 0 12px rgba(124, 58, 237, 0.15);
+  }
+
+  .submit-btn {
+    padding: 14px;
+    background: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .submit-btn:hover {
+    background: var(--accent-secondary);
+    box-shadow: 0 8px 20px rgba(124, 58, 237, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .submit-btn:active {
+    transform: translateY(0);
+  }
+
+  /* Success Screen Styles */
+  .success-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+    height: 100%;
+    min-height: 350px;
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .success-icon {
+    width: 72px;
+    height: 72px;
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 2px solid rgba(16, 185, 129, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+
+  .success-screen h3 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  .success-screen p {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    line-height: 1.6;
+    max-width: 320px;
+    margin-bottom: 24px;
+  }
+
+  .reset-btn {
+    padding: 10px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+
+  .reset-btn:hover {
+    background: var(--accent-primary);
+    border-color: var(--accent-primary);
+    color: white;
+    box-shadow: 0 4px 12px rgba(124, 58, 237, 0.2);
+  }
+
+  /* Loader */
+  .loader {
+    width: 18px;
+    height: 18px;
+    border: 2px solid white;
+    border-bottom-color: transparent;
+    border-radius: 50%;
+    display: inline-block;
+    animation: rotation 1s linear infinite;
+  }
+
+  @keyframes rotation {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .hidden {
+    display: none !important;
+  }
+
+  @media (max-width: 900px) {
+    .contact-grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .form-row {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
   }
 </style>

@@ -1,6 +1,13 @@
 {
   "name": "FATHUL HIDAYAT",
   "title": "Software Developer (Mobile & Backend)",
+  "subtitles": [
+    "Software Developer (Mobile & Backend)",
+    "Mobile App Developer",
+    "Backend Engineer",
+    "Flutter Specialist",
+    "Fullstack Developer"
+  ],
   "about": {
     "brief": "Experienced software developer with 3+ years experience, specializing in cross-platform mobile development and robust backend systems. Published 10+ applications across Google Play Store and Apple App Store. Expert in Flutter, Go, and native Android/iOS development.",
     "description": "Highly skilled and results-oriented Software Developer with over 3 years of professional experience in designing, developing, and deploying high-performance mobile and backend applications. Expert in Flutter for cross-platform solutions and Go / .NET for robust, scalable backend architectures. I have a proven track record of successfully publishing 10+ applications to the Google Play Store and the Apple App Store, demonstrating a deep understanding of the full mobile app development lifecycle. My technical expertise extends to real-time communication protocols like WebSockets, cloud messaging with Firebase, and modern architectural patterns such as BloC and Riverpod. Beyond coding, I am an advocate for clean code principles, modular architecture, and efficient CI/CD workflows. I thrive in agile environments and am dedicated to building user-centric products that solve complex problems through innovative technology.",
@@ -11,7 +18,7 @@
         "location": "Bandung, West Java",
         "period": "August 2024 - Present",
         "image": "/assets/images/company/uniguard.png",
-        "description": "Developed and maintained mobile applications for both cross-platform (Flutter with Riverpod) and native platforms (Kotlin, Java, Swift). Experienced in full app lifecycle from development to Play Store publishing. Implemented real-time communication features using WebSocket and push notifications with Firebase Cloud Messaging (FCM). Translated business requirements into functional and scalable software solutions. Worked closely with cross-functional teams to design and implement new features. Optimized application performance and resolved technical issues. Maintained clean, modular, and well-documented code for future development."
+        "description": "Developed and maintained various enterprise mobile applications utilizing Flutter, Kotlin Multiplatform, and native Android/iOS. Integrated specialized hardware SDKs such as UHF RFID for real-time passenger tracking and asset inventory, alongside motion-sensor systems for lone-worker safety. Architected low-latency communication features including WebSocket-based Push-to-Talk (PTT) with Mumble Server and live telemetry tracking via Traccar Server. Designed clean architectures using Riverpod, Compose Multiplatform, and SQLDelight while connecting with Go-Fiber and Echo backend APIs."
       },
       {
         "company": "PT Zen Multimedia Indonesia",
@@ -200,7 +207,8 @@
       ],
       "link": {
         "playStore": "https://play.google.com/store/apps/details?id=com.uniguard.mandown_app",
-        "appStore": "https://apps.apple.com/app/man-down/id6779484298"
+        "appStore": "https://apps.apple.com/app/man-down/id6779484298",
+        "website": "https://mandown-2026.web.app/"
       }
     },
     {

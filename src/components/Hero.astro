@@ -2,17 +2,18 @@
 interface Props {
   name: string;
   title: string;
+  subtitles?: string[];
   brief: string;
 }
 
-const { name, title, brief } = Astro.props;
+const { name, title, subtitles = [title], brief } = Astro.props;
 ---
 
 <section class="hero container">
   <div class="hero-content reveal">
     <span class="greeting">Hello, I'm</span>
     <h1>{name}</h1>
-    <h2 class="gradient-text">{title}</h2>
+    <h2 class="gradient-text"><span id="typewriter" data-title={title} data-subtitles={JSON.stringify(subtitles)}></span><span class="type-cursor">|</span></h2>
     <p>{brief}</p>
     <div class="hero-actions">
       <a href="#projects" class="btn btn-primary">View My Work</a>
@@ -180,4 +181,62 @@ const { name, title, brief } = Astro.props;
       font-size: 1.5rem;
     }
   }
+
+  .type-cursor {
+    display: inline-block;
+    color: var(--accent-primary);
+    margin-left: 4px;
+    animation: blink 0.8s infinite alternate;
+  }
+
+  @keyframes blink {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+  }
 </style>
+
+<script>
+  const typewriter = document.getElementById('typewriter');
+  if (typewriter) {
+    const defaultTitle = typewriter.getAttribute('data-title') || 'Software Developer';
+    const subtitlesAttr = typewriter.getAttribute('data-subtitles');
+    let words = [defaultTitle];
+    if (subtitlesAttr) {
+      try {
+        words = JSON.parse(subtitlesAttr);
+      } catch (e) {
+        console.error('Failed to parse subtitles', e);
+      }
+    }
+    let wordIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let delay = 150;
+
+    function type() {
+      const currentWord = words[wordIndex];
+      if (isDeleting) {
+        typewriter!.textContent = currentWord.substring(0, charIndex - 1);
+        charIndex--;
+        delay = 60;
+      } else {
+        typewriter!.textContent = currentWord.substring(0, charIndex + 1);
+        charIndex++;
+        delay = 120;
+      }
+
+      if (!isDeleting && charIndex === currentWord.length) {
+        delay = 2000; // Pause at end of word
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        wordIndex = (wordIndex + 1) % words.length;
+        delay = 500; // Pause before typing next word
+      }
+
+      setTimeout(type, delay);
+    }
+
+    setTimeout(type, 1000);
+  }
+</script>
